@@ -7,7 +7,8 @@
 # * Translation rule from .md to .html
 # * Create list of target files and perform translation
 # * Copy multimedia files as in previous point
-# * Create index file
+# * Create index HTML file
+# * Create RSS feed
 # * Create help message for this Makefile
 
 OUT_DIR = out
