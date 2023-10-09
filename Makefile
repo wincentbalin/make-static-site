@@ -121,13 +121,8 @@ $(OUT_DIR)/%.html: %.md  # Mostly from https://github.com/stamby/md-to-html/
 	-e '        s/(^|\n)( *)\&gt\;/\1 /g' \
 	-e '        tb' \
 	-e '    }' \
-	-e '    s/(^|\n)( *)\&gt\; *([^\n]+)/\1\2<p>\3<\/p>/g' \
+	-e '    s/(^|\n) *([^\n]+)/\1<p>\2<\/p>/g' \
 	-e '    s/(^|\n)<p>[^\n]+<\/p>(\n *<p>[^\n]+<\/p>)*/\1<blockquote>&\n<\/blockquote>/g' \
-	-e '    s/(^|\n)( )<p>[^\n]+<\/p>(\n\2 *<p>[^\n]+<\/p>)*/\1\2<blockquote>&\n\2<\/blockquote>/g' \
-	-e '    s/(^|\n)( {2})<p>[^\n]+<\/p>(\n\2 *<p>[^\n]+<\/p>)*/\1\2<blockquote>&\n\2<\/blockquote>/g' \
-	-e '    s/(^|\n)( {3})<p>[^\n]+<\/p>(\n\2 *<p>[^\n]+<\/p>)*/\1\2<blockquote>&\n\2<\/blockquote>/g' \
-	-e '    s/(^|\n)( {4})<p>[^\n]+<\/p>(\n\2 *<p>[^\n]+<\/p>)*/\1\2<blockquote>&\n\2<\/blockquote>/g' \
-	-e '    s/(^|\n)( {5,})<p>[^\n]+<\/p>(\n\2 *<p>[^\n]+<\/p>)*/\1\2<blockquote>&\n\2<\/blockquote>/g' \
 	-e '}' \
 	-e '/\n *<[ou]li>|\n *<p>/{' \
 	-e '    s/<(\/?)[ou]li>/<\1li>/g' \
