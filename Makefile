@@ -20,7 +20,7 @@ HTML_FILES := $(patsubst %.md, $(OUT_DIR)/%.html, $(MD_FILES))
 
 all: prereqs $(HTML_FILES)
 
-prereqs: $(OUT_DIR) $(OUT_DIR)/style.css
+prereqs: $(OUT_DIR)/style.css
 
 $(OUT_DIR):
 	mkdir $(OUT_DIR)
