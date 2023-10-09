@@ -13,10 +13,12 @@ OUT_DIR = out
 endif
 MD_FILES := $(wildcard *.md)
 HTML_FILES := $(patsubst %.md, $(OUT_DIR)/%.html, $(MD_FILES))
+IMAGE_FILES := $(wildcard *.jpg *.jpeg *.png *.gif *.webp)
+MEDIA_FILES := $(patsubst %, $(OUT_DIR)/%, $(IMAGE_FILES))
 
 .PHONY: prereqs
 
-all: prereqs $(HTML_FILES)
+all: prereqs $(HTML_FILES) $(MEDIA_FILES)
 
 prereqs: $(OUT_DIR)/style.css
 
@@ -186,3 +188,6 @@ $(OUT_DIR)/%.html: %.md  # Mostly from https://github.com/stamby/md-to-html/
 	-e 's/\n//g' $< >> $@
 	echo "</body>" >> $@
 	echo "</html>" >> $@
+
+$(OUT_DIR)/%: %
+	cp $< $@
