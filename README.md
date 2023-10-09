@@ -18,3 +18,7 @@ This is a static site generator in a single `Makefile`, using `make` and `sed` o
 # License
 
 [MIT](LICENSE)
+
+# Acknowledgement
+
+This project is based on this Markdown-to-HTML converter in `sed`: https://github.com/stamby/md-to-html/
