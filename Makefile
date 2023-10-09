@@ -3,7 +3,6 @@
 #
 
 # TODO
-# * Copy multimedia files as in previous point
 # * Create index HTML file
 # * Create RSS feed
 # * Create help message for this Makefile
