@@ -3,8 +3,6 @@
 #
 
 # TODO
-# * Create list of target files and perform translation
-# * Translation rule from .md to .html
 # * Copy multimedia files as in previous point
 # * Create index HTML file
 # * Create RSS feed
