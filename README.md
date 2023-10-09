@@ -13,6 +13,7 @@ This is a static site generator in a single `Makefile`, using `make` and `sed` o
 
 # Known problems
 
+* Does not work in Windows, neither in CMD nor in Powershell
 * GNU Make does not handle spaces in file names: http://savannah.gnu.org/bugs/?712
 
 # License
