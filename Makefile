@@ -206,9 +206,7 @@ $(OUT_DIR)/index.html: $(INDEX_INC_FILES)
 	echo "<head>" >> $@
 	echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" >> $@
 	echo "<link rel=\"stylesheet\" href=\"style.css\">" >> $@
-	echo "<title>" >> $@
-	echo "$(TITLE)" >> $@
-	echo "</title>" >> $@
+	echo "<title>$(TITLE)</title>" >> $@
 	echo "</head>" >> $@
 	echo "<body>" >> $@
 	echo "<h1>$(TITLE)</h1>" >> $@
