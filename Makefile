@@ -3,7 +3,6 @@
 #
 
 # TODO
-# * Create RSS feed
 # * Create help message for this Makefile
 
 ifndef OUT_DIR
