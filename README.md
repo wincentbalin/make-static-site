@@ -1,6 +1,6 @@
 # Make static site
 
-This is a static site generator in a single `Makefile`, using `make` and `sed` on Markdown files.
+This is a static site generator in a single `Makefile`, using `make` and `sed` on Markdown files, and `cp` on image files.
 
 # Usage
 
@@ -10,6 +10,7 @@ This is a static site generator in a single `Makefile`, using `make` and `sed` o
 
 * (GNU) Make
 * (GNU) sed
+* cp
 
 # Known problems
 
