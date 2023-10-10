@@ -2,9 +2,6 @@
 # This is make-static-site, a static site generator in a single Makefile, using make and sed on Markdown files.
 #
 
-# TODO
-# * Create help message for this Makefile
-
 ifndef OUT_DIR
 OUT_DIR = out
 endif
