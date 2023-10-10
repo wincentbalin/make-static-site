@@ -34,21 +34,21 @@ $(OUT_DIR):
 	mkdir $(OUT_DIR)
 
 $(OUT_DIR)/style.css: $(OUT_DIR)
-	echo "/* Style for Makefile static generator */" > $@
-	echo "body {" >> $@
-	echo "}" >> $@
+	echo '/* Style for Makefile static generator */' > $@
+	echo 'body {' >> $@
+	echo '}' >> $@
 
 $(OUT_DIR)/%.html: %.md  # Mostly from https://github.com/stamby/md-to-html/
-	echo "<!DOCTYPE html>" > $@
-	echo "<html>" >> $@
-	echo "<head>" >> $@
-	echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" >> $@
-	echo "<link rel=\"stylesheet\" href=\"style.css\">" >> $@
-	echo "<title>" >> $@
+	echo '<!DOCTYPE html>' > $@
+	echo '<html>' >> $@
+	echo '<head>' >> $@
+	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">' >> $@
+	echo '<link rel="stylesheet" href="style.css">' >> $@
+	echo '<title>' >> $@
 	sed -n -e '/^#/ {s/^#\s*//p;q}' $< >> $@
-	echo "</title>" >> $@
-	echo "</head>" >> $@
-	echo "<body>" >> $@
+	echo '</title>' >> $@
+	echo '</head>' >> $@
+	echo '<body>' >> $@
 	sed -E \
 	-e 's/\t/  /g' \
 	-e 's/^ +$$//' \
@@ -194,26 +194,26 @@ $(OUT_DIR)/%.html: %.md  # Mostly from https://github.com/stamby/md-to-html/
 	-e 's/^#{2} (.*)\n(.*)$$/<h2 id="\2">\1<\/h2>/' \
 	-e 's/^# (.*)\n(.*)$$/<h1 id="\2">\1<\/h1>/' \
 	-e 's/\n//g' $< >> $@
-	echo "</body>" >> $@
-	echo "</html>" >> $@
+	echo '</body>' >> $@
+	echo '</html>' >> $@
 
 $(OUT_DIR)/%.inc: %.md
 	sed -E -n -e '/^#/ {s/^#\s*(.*)$$/<p><a href="$(patsubst %.md,%.html,$<)">\1<\/a><\/p>/p;q}' $< > $@
 
 $(OUT_DIR)/index.html: $(INDEX_INC_FILES)
-	echo "<!DOCTYPE html>" > $@
-	echo "<html>" >> $@
-	echo "<head>" >> $@
-	echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" >> $@
-	echo "<link rel=\"stylesheet\" href=\"style.css\">" >> $@
-	echo "<title>$(TITLE)</title>" >> $@
-	echo "</head>" >> $@
-	echo "<body>" >> $@
-	echo "<h1>$(TITLE)</h1>" >> $@
-	echo "<p>$(INTRO)</p>" >> $@
+	echo '<!DOCTYPE html>' > $@
+	echo '<html>' >> $@
+	echo '<head>' >> $@
+	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">' >> $@
+	echo '<link rel="stylesheet" href="style.css">' >> $@
+	echo '<title>$(TITLE)</title>' >> $@
+	echo '</head>' >> $@
+	echo '<body>' >> $@
+	echo '<h1>$(TITLE)</h1>' >> $@
+	echo '<p>$(INTRO)</p>' >> $@
 	sed -n 'p' $^ >> $@
-	echo "</body>" >> $@
-	echo "</html>" >> $@
+	echo '</body>' >> $@
+	echo '</html>' >> $@
 
 $(OUT_DIR)/%: %
 	cp $< $@
