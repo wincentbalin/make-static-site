@@ -42,6 +42,7 @@ $(OUT_DIR)/%.html: %.md  # Mostly from https://github.com/stamby/md-to-html/
 	echo '<!DOCTYPE html>' > $@
 	echo '<html>' >> $@
 	echo '<head>' >> $@
+	echo '<meta charset="utf-8">' >> $@
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">' >> $@
 	echo '<link rel="stylesheet" href="style.css">' >> $@
 	echo '<title>' >> $@
@@ -204,6 +205,7 @@ $(OUT_DIR)/index.html: $(INDEX_INC_FILES)
 	echo '<!DOCTYPE html>' > $@
 	echo '<html>' >> $@
 	echo '<head>' >> $@
+	echo '<meta charset="utf-8">' >> $@
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">' >> $@
 	echo '<link rel="stylesheet" href="style.css">' >> $@
 	echo '<title>$(TITLE)</title>' >> $@
