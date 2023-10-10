@@ -28,7 +28,11 @@ all: prereqs $(HTML_FILES) $(MEDIA_FILES) postreqs
 
 prereqs: $(OUT_DIR)/style.css
 
+ifdef BUILD_FEED_WITH_URL
+postreqs: $(OUT_DIR)/index.html $(OUT_DIR)/feed.xml
+else
 postreqs: $(OUT_DIR)/index.html
+endif
 
 $(OUT_DIR):
 	mkdir $(OUT_DIR)
@@ -216,6 +220,19 @@ $(OUT_DIR)/index.html: $(INDEX_INC_FILES)
 	sed -n 'p' $^ >> $@
 	echo '</body>' >> $@
 	echo '</html>' >> $@
+
+$(OUT_DIR)/feed.xml: $(OUT_DIR)/index.html
+	echo '<?xml version="1.0" encoding="utf-8"?>' > $@
+	echo '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">' >> $@
+	echo '<channel>' >> $@
+	echo '<title>$(TITLE)</title>' >> $@
+	echo '<link>$(BUILD_FEED_WITH_URL)</link>' >> $@
+	echo '<atom:link href="$(BUILD_FEED_WITH_URL)$(notdir $@)" rel="self" type="application/rss+xml"/>' >> $@
+	echo '<description>$(INTRO)</description>' >> $@
+	sed -E -n -e '/^<p><a.+<\/a><\/p>$$/ {s/^<p><a href="(.+)">(.+)<\/a><\/p>$$/<item>\n<title>\2<\/title>\n<link>$(subst /,\/,$(BUILD_FEED_WITH_URL))\1<\/link>\n<\/item>/p}' $< >> $@
+	echo '</channel>' >> $@
+	echo '</rss>' >> $@
+	sed -i -e '/<\/title>/a\' -e '<link rel="alternate" type="application/rss+xml" title="RSS" href="$(notdir $@)">' $<
 
 $(OUT_DIR)/%: %
 	cp $< $@
