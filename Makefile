@@ -10,16 +10,26 @@
 ifndef OUT_DIR
 OUT_DIR = out
 endif
+ifndef TITLE
+TITLE = A page
+endif
+ifndef INTRO
+INTRO = These are the pages listed:
+endif
 MD_FILES := $(wildcard *.md)
 HTML_FILES := $(patsubst %.md, $(OUT_DIR)/%.html, $(MD_FILES))
 IMAGE_FILES := $(wildcard *.jpg *.jpeg *.png *.gif *.webp)
 MEDIA_FILES := $(patsubst %, $(OUT_DIR)/%, $(IMAGE_FILES))
+INDEX_INC_FILES := $(patsubst %.md, $(OUT_DIR)/%.inc, $(MD_FILES))
 
-.PHONY: prereqs
+.PHONY: prereqs postreqs
+.INTERMEDIATE: $(INDEX_INC_FILES)
 
-all: prereqs $(HTML_FILES) $(MEDIA_FILES)
+all: prereqs $(HTML_FILES) $(MEDIA_FILES) postreqs
 
 prereqs: $(OUT_DIR)/style.css
+
+postreqs: $(OUT_DIR)/index.html
 
 $(OUT_DIR):
 	mkdir $(OUT_DIR)
@@ -185,6 +195,26 @@ $(OUT_DIR)/%.html: %.md  # Mostly from https://github.com/stamby/md-to-html/
 	-e 's/^#{2} (.*)\n(.*)$$/<h2 id="\2">\1<\/h2>/' \
 	-e 's/^# (.*)\n(.*)$$/<h1 id="\2">\1<\/h1>/' \
 	-e 's/\n//g' $< >> $@
+	echo "</body>" >> $@
+	echo "</html>" >> $@
+
+$(OUT_DIR)/%.inc: %.md
+	sed -E -n -e '/^#/ {s/^#\s*(.*)$$/<p><a href="$(patsubst %.md,%.html,$<)">\1<\/a><\/p>/p;q}' $< > $@
+
+$(OUT_DIR)/index.html: $(INDEX_INC_FILES)
+	echo "<!DOCTYPE html>" > $@
+	echo "<html>" >> $@
+	echo "<head>" >> $@
+	echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" >> $@
+	echo "<link rel=\"stylesheet\" href=\"style.css\">" >> $@
+	echo "<title>" >> $@
+	echo "$(TITLE)" >> $@
+	echo "</title>" >> $@
+	echo "</head>" >> $@
+	echo "<body>" >> $@
+	echo "<h1>$(TITLE)</h1>" >> $@
+	echo "<p>$(INTRO)</p>" >> $@
+	sed -n 'p' $^ >> $@
 	echo "</body>" >> $@
 	echo "</html>" >> $@
 
