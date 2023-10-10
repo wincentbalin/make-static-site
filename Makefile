@@ -3,7 +3,6 @@
 #
 
 # TODO
-# * Create index HTML file
 # * Create RSS feed
 # * Create help message for this Makefile
 
