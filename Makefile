@@ -34,8 +34,59 @@ $(OUT_DIR):
 	mkdir $(OUT_DIR)
 
 $(OUT_DIR)/style.css: $(OUT_DIR)
-	echo '/* Style for Makefile static generator */' > $@
+	echo '/* Style for Makefile static generator, mostly from https://jblevins.org/ */' > $@
 	echo 'body {' >> $@
+	echo '    margin: 0 auto;' >> $@
+	echo '    max-width: 60rem;' >> $@
+	echo '    font-family: "Minion Pro Caption", minion-pro-caption, "Minion Pro", "Garamond Premier Pro Caption", "Garamond Premier Pro", "Hoefler Text", Constantia, Garamond, Palatino, "Palatino Linotype", Baskerville, "Book Antiqua", Georgia, "Century Schoolbook L", serif;' >> $@
+	echo '    color: #333232' >> $@
+	echo '}' >> $@
+	echo '' >> $@
+	echo 'h1, h2, h3, h4, h5, h6 {' >> $@
+	echo '    font-family: "Garamond Premier Pro", garamond-premier-pro, "Adobe Caslon Pro", "Minion Pro", Constantia, serif;' >> $@
+	echo '    font-weight: normal;' >> $@
+	echo '    font-style: normal;' >> $@
+	echo '    color: #111;' >> $@
+	echo '}' >> $@
+	echo '' >> $@
+	echo 'p {' >> $@
+	echo '    margin-top: 0;' >> $@
+	echo '    margin-bottom: 1.5rem;' >> $@
+	echo '    text-align: justify;' >> $@
+	echo '    hyphens: auto' >> $@
+	echo '}' >> $@
+	echo '' >> $@
+	echo 'img {' >> $@
+	echo '    max-width: 100%' >> $@
+	echo '}' >> $@
+	echo '' >> $@
+	echo 'blockquote {' >> $@
+	echo '    margin: 0 0 1.5rem;' >> $@
+	echo '    border-left: 0.4rem solid #C4BCB3;' >> $@
+	echo '    padding: 0 0 0 1.1rem' >> $@
+	echo '}' >> $@
+	echo '' >> $@
+	echo 'ul, ol {' >> $@
+	echo '    padding-left: 1.8rem;' >> $@
+	echo '    margin-bottom: 1.5rem;' >> $@
+	echo '}' >> $@
+	echo '' >> $@
+	echo 'li {' >> $@
+	echo '    line-height: 1.5rem' >> $@
+	echo '}' >> $@
+	echo '' >> $@
+	echo 'code, pre {' >> $@
+	echo '    font-family: Inconsolata, inconsolata, "Source Code Pro", Terminus, Consolas, "Liberation Mono", "Bitstream Vera Sans Mono", "Andale Mono WT", "Andale Mono", Monaco, "Lucida Console", "Lucida Sans Typewriter", "Nimbus Mono L", "Courier New", Courier, monospace' >> $@
+	echo '}' >> $@
+	echo '' >> $@
+	echo 'pre {' >> $@
+	echo '    border: 1px solid #C4BCB3;' >> $@
+	echo '    margin: 0 0 1.5rem 0;' >> $@
+	echo '    padding: 0.6875rem;' >> $@
+	echo '    background-color: #f1efec;' >> $@
+	echo '    white-space: pre;' >> $@
+	echo '    overflow-x: auto;' >> $@
+	echo '    border-radius: 0.5rem' >> $@
 	echo '}' >> $@
 
 $(OUT_DIR)/%.html: %.md  # Mostly from https://github.com/stamby/md-to-html/
