@@ -62,6 +62,8 @@ Change the parameter `BUILD_FEED_WITH_URL` to the approprate URL. _Do not_ forge
 
 [MIT](LICENSE)
 
-# Acknowledgement
+# Acknowledgements
 
 This project is based on this Markdown-to-HTML converter in `sed`: https://github.com/stamby/md-to-html/
+
+The style is based on the website of Jason Blevins: https://jblevins.org/
