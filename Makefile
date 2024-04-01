@@ -46,7 +46,7 @@ $(OUT_DIR)/style.css: $(OUT_DIR)
 	echo '    font-family: "Garamond Premier Pro", garamond-premier-pro, "Adobe Caslon Pro", "Minion Pro", Constantia, serif;' >> $@
 	echo '    font-weight: normal;' >> $@
 	echo '    font-style: normal;' >> $@
-	echo '    color: #111;' >> $@
+	echo '    color: #111' >> $@
 	echo '}' >> $@
 	echo '' >> $@
 	echo 'p {' >> $@
@@ -68,7 +68,7 @@ $(OUT_DIR)/style.css: $(OUT_DIR)
 	echo '' >> $@
 	echo 'ul, ol {' >> $@
 	echo '    padding-left: 1.8rem;' >> $@
-	echo '    margin-bottom: 1.5rem;' >> $@
+	echo '    margin-bottom: 1.5rem' >> $@
 	echo '}' >> $@
 	echo '' >> $@
 	echo 'li {' >> $@
